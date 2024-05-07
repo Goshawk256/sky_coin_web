@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hafıza Kartı</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"crossorigin="anonymous"/>
+        <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+    *{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Roboto", sans-serif;
+}
+.container{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative;
+background: #ee91cf;
+width: 800px;
+gap: 20px;
+padding: 40px 20px;
+}
+h2{
+font-size: 2.5em;
+color: #FFF;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+}
+.sonuc{
+visibility: hidden;
+}
+.goster{
+visibility: visible;
+font-size: 2em;
+color: #FFF;
+font-weight: 600;
+}
+.reset{
+padding: 10px 10px;
+color: #ec4fb8;
+background: #FFF;
+border: none;
+font-size: 1.4em;
+font-weight: 600;
+text-transform: uppercase;  
+letter-spacing: 0.1em;
+cursor: pointer;  
+}
+.reset:focus{
+color: #FFF;
+background-color: #ee91cf;
+}
+.game{
+width: 540px;
+height: 420px;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+transform-style: preserve-3d;
+perspective: 400px;
+}
+.item{
+position: relative;
+width: 80px;
+height: 80px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3em;
+background: #FFF;
+transform: rotateY(180deg);
+transition: 0.25s; 
+}
+.item.kutuAc{
+transform: rotateY(0deg);
+}
+.item::after{
+content: '';
+position: absolute;
+inset: 0;
+background: #FFF;
+transition: 0.25s;
+transform: rotateY(0deg);
+backface-visibility: hidden;
+}
+.kutuAc:after,
+.kutuEsle:after{
+transform: rotateY(180deg);
+}
+header {
+    box-shadow: 0px -2px 9px 0px #0000008c;
+    position: fixed;
+    z-index: 999;
+    background: white;
+    width: 100%;
+ }
+ /* menü kısmı*/
+ .anakisim{
+    margin-left: 150px;
+ }
+ .biçimlendirme{
+    font-weight: bold;
+ }
+ .biçimlendirme2{
+    margin-top: 5px;
+    margin-right: 100px;
+    word-spacing: 10px;
+ }
+ .navbar-brand { /* skycoin yazısının ortalı olmasını sağlar */
+    padding-top: 0.2125rem;
+ }
+ .dropdown:hover .dropdown-menu { /* menü altı menü şıklarının görünmesini sağlıyor */
+    display: block;
+ }
+ a.nav-link { /* üst çubuk font ve yazı tipi */
+    font-size: 14px;
+    font-family: Roboto !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+ }
+ .nav-list { /* menü altındaki menünün yerini belirler */
+    position: relative !important;
+ }
+ .dropdown {  /* üst çubuk kelimeler arası boşluk */
+    padding: 0.8rem;
+    position: unset;
+ }
+ .dropdown-menu {
+    min-width: 200px;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.15);
+    animation-name: slideAnimation;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: backwards;
+ }
+ /* menü kısmı sonu*/
+ /*footer- son kısım*/
+.birinci {
+    text-align: center;
+    margin-top: 15px;
+ }
+ .ikinci {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+ }
+ footer {
+    background: #ee91cf;
+    margin-top: 50px;
+    padding: 10px;
+    color: #fff;
+ }
+ /*footer-son kısım sonu*/
+.header-reset {
+    height: 100px;
+ }
+ a,
+ a:hover {
+    color: #000;
+ }
+ a:hover {
+    text-decoration: none !important;
+    color: #ee91cf !important;
+ }
+ 
+ ::selection {
+    background-color: #ee91cf;
+    color: #fff;
+ }
+ .cüzdan{
+   width: 40px;
+   height: 40px;
+}
+</style>
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <div class="anakisim">
+                <a href="#"><div class="logo"></div></a>
+                <!-- üst gezinti çubuğu -->
+                <div class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/anasayfa">SKYCOİN</a>
+                        <div class="collapse navbar-collapse">
+                            <ul class="navbar-nav mr-auto">
+                                <!-- Üst menü -->
+                                <li class="nav-item dropdown nav-list">
+                                    <a class="biçimlendirme">AL/SAT</a>
+                                    <div class="dropdown-menu">
+                                        <ul class="list-unstyled p-3">
+                                                <a class="" href="/al"><i class="fa fa-caret-right pl-1 pr-3"></i>Al</a>
+                                                <br>
+                                                <a class="" href="/sat"><i class="fa fa-caret-right pl-1 pr-3"></i>Sat</a>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown nav-list">
+                                    <a href="/piyasalar" class="biçimlendirme">PİYASALAR</a>
+                                </li>
+                                <li class="nav-item dropdown nav-list">
+                                    <a href="/oynakazan" class="biçimlendirme">OYNA KAZAN</a>
+                                        <div class="dropdown-menu">
+                                            <div class="row no-gutters p-4">
+                                                <ul class="list-unstyled">
+                                                        <a class="" href="/adamasmaca"><i class="fa fa-caret-right pl-1 pr-3"></i>Adam Asmaca</a><br>
+                                                        <a class="" href="/tam12den"><i class="fa fa-caret-right pl-1 pr-3"></i>Tam 12'den</a><br>
+                                                        <a class="" href="/hafizakarti"><i class="fa fa-caret-right pl-1 pr-3"></i>Hafıza Kartı</a>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                </li>
+                            </ul>
+                            <!-- Giriş/Kaydol -->
+                            <ul class="biçimlendirme2">
+
+                                <a href="/giris" class="biçimlendirme">GİRİŞ</a>
+                                <a href="/kayit" class="biçimlendirme">KAYDOL</a>
+                            </ul>
+                        </div>
+                </div>
+                <!-- üst gezinti çubuğu sonu -->
+            </div>
+        </header>
+        <!-- üst gezinti çubuğu sonu -->
+        <play>
+            <div class="header-reset"></div>
+            <div class="container">
+                <h2>Hafıza Oyunu</h2>
+                <div id="sonucDiv" class="sonuc"></div>
+                <div class="game"></div>
+                <button id="resetBtn" class="reset">Yeni Oyun</button>
+            </div>
+            <script>
+            const emojis = ["😂","😂","❤️","❤️","😍","😍","👌","👌","💕","💕","😁","😁","🎶","🎶","😜","😜","😎","😎"];
+var emoji_sira = emojis.sort(() => (Math.random() > .5) ? 3 : -1);
+for( var i = 0; i < emojis.length; i++){
+let kutu = document.createElement('div')
+kutu.className = 'item';
+kutu.innerHTML = emoji_sira[i]
+document.querySelector('.game').appendChild(kutu);
+kutu.onclick = function() {
+this.classList.add('kutuAc')
+setTimeout(function() {
+if(document.querySelectorAll('.kutuAc').length > 1){
+if(document.querySelectorAll('.kutuAc')[0].innerHTML == document.querySelectorAll('.kutuAc')[1].innerHTML){
+document.querySelectorAll('.kutuAc')[0].classList.add('kutuEsle')
+document.querySelectorAll('.kutuAc')[1].classList.add('kutuEsle')
+
+document.querySelectorAll('.kutuAc')[1].classList.remove('kutuAc')
+document.querySelectorAll('.kutuAc')[0].classList.remove('kutuAc')
+
+if(document.querySelectorAll('.kutuEsle').length == emojis.length){
+document.querySelectorAll('.sonuc')[0].classList.add('goster')
+document.getElementById('sonucDiv').innerHTML = "Tebrikler. Kazandınız!"
+}
+} else {
+document.querySelectorAll('.kutuAc')[1].classList.remove('kutuAc')
+document.querySelectorAll('.kutuAc')[0].classList.remove('kutuAc')
+}
+}
+}, 500)
+}
+}
+function yenile() {window.location.reload();}
+document.getElementById("resetBtn").addEventListener("click", yenile);    
+            </script>
+        </play>
+        <!-- en alt kısım -->
+        <footer>
+            <div class="bitiş">
+                <div class="birinci">
+                    <h2>Hayallerinizin Dünyası</h2>
+                </div>
+                <div>
+                    <p class="ikinci">Skycoin©2023</p>
+                </div>
+        </footer>
+        <!-- en alt kısım sonu-->
+    </body>
+</html>
